@@ -2,6 +2,7 @@ import { useState,useEffect } from "react"
 function Login(){
 const [loginData,setloginData]=useState([
     username="",
+    password="",
 ]);
 useEffect(() =>{
     try{
