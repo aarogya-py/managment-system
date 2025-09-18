@@ -26,23 +26,49 @@ def login(request):
         return Response(serealizer.data,status=status.HTTP_201_CREATED)
     return Response(serealizer.errors,status=status.HTTP_400_BAD_REQUEST)
 
-  
 
     
 def home():
     print("home")
-
-def purchase_stock():
-    print("")
-
-def sales_record():
-  print("")
+@api_view(['POST','GET'])
+def Purchase_stock(request):
+    date=request.data.get('date')
+    product_name=request.data.get('product_name')
+    categories=request.data.get('categories')
+    brand_name=request.data.get('brand_name')
+    cost_price=request.data.get('cost_price')
+    serealizer=PurchaseStockSerializer(data=request.data)
+    if not date or not product_name or not categories or not brand_name or not cost_price:
+        return Response({"All fields are required"},status=status.HTTP_400_BAD_REQUEST) 
+    if serealizer.is_valid():
+        serealizer.save()
+        return Response(serealizer.data,status=status.HTTP_201_CREATED)
+    return Response(serealizer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET','POST'])
+def sales_record(request):
+    categories=request.data.get('categories')
+    brands=request.data.get('brands')
+    keywords=request.data.get('keywords')
+    
 
 def sales_graph():
-  print("")
+    print("")
 
 def summary():
-  print("")
+    print("")
 
-def logbook():
-  print("") 
+@api_view(['POST','GET'])
+def logbook(request):
+    date=request.data.get('date')
+    particulars=request.data.get('particulars')
+    vendor=request.data.get('vendor')
+    type=request.data.get('type')
+    amount=request.data.get('amount')
+    serealizer=LogbookSerializer(data=request.data)
+    if not date or not particulars or not vendor or not type or not amount:
+        return Response({"All fields are required"},status=status.HTTP_400_BAD_REQUEST)
+    if serealizer.is_valid():
+        serealizer.save()
+        return Response(serealizer.data,status=status.HTTP_201_CREATED)
+    return Response(serealizer.errors,status=status.HTTP_400_BAD_REQUEST)

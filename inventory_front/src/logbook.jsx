@@ -10,21 +10,23 @@ function Logbook(){
         particulars:"",
         vendor:"",
         type:"",
-        price:""
+        amount:""
     });
     const handelChange=(e)=>{
         setLogbookData({...LogbookData,[e.target.name]:e.target.value});
 
     }
-    const handelSumit=async()=>{
+    const handelSumit=async(e)=>{
+        e.preventDefault();
         try{
-            const GetLogbookData=await fetch("http://localhost:8000/controls/logbook",{
+            const GetLogbookData=await fetch("http://localhost:8000/control/logbook",{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json",
                 },
                 body:JSON.stringify(LogbookData)
             }); 
+            console.log("frontend data",LogbookData)
             const data=await GetLogbookData.json();
             console.log("backend data",data)
         }   
@@ -49,45 +51,25 @@ function Logbook(){
                             Record transaction
                         </h1>
                         <div>
-                            <form action="">
                             <div>
-                                <input type="date" name="date" value={"LogbookData.date"} onChange={handelChange}/>
-                                <input type="text" name="particular" value={"LogbookData.particular"}  placeholder=" Particulars" onChange={handelChange}/>
-                                <input type="text" placeholder="Vendor" />
-                                <select name="type" id="" onchange={handelChange} value={"LogbookData.type"}>
-                                    <option value="">--transaction type--</option>
-                                    <option name="sales" value="LogbookData.sales">Sales</option>
-                                    <option name="purchase" value="LogbookData.purchase">Purchase</option>
+                                <input type="date" name="date" value={LogbookData.date} placeholder="date" onChange={handelChange}/>
+                                <input type="text" name="particulars" placeholder=" Particulars" value={LogbookData.particulars}   onChange={handelChange}/>
+                                <input type="text" placeholder="Vendor" name="vendor" value={LogbookData.vendor} onChange={handelChange} />
+                                <select name="type" id="" value={LogbookData.type} onChange={handelChange}>
+                                    <option value="">Type</option>
+                                    <option value="Purchase">Purchase</option>
+                                    <option value="Sales">Sales</option>
                                 </select>
-                                <input type="text" name="price" value={"LogbookData.price"}  placeholder="Price" onChange={handelChange}/>
+                                <input type="text" name="amount" value={LogbookData.amount}  placeholder="Price" onChange={handelChange}/>
                             </div>
                             <div>
                                 <button onClick={handelSumit}>Post Record</button>
                             </div>
-                            </form>
                         </div>
                     </div>
                     <div>
                         <h2>Transactions</h2>
-                        <table>
-                            <th>
-                                <td>
-                                    Date
-                                </td>
-                                <td>
-                                    Particulars
-                                </td>
-                                <td>
-                                    Purchase/Sales
-                                </td>
-                                <td>
-                                    Price
-                                </td>
-                            </th>
-                            <tr>
-                                <td>d</td>
-                            </tr>
-                        </table>
+                        
                     </div>
                 </div>
             </div>

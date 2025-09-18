@@ -1,5 +1,37 @@
 import Nav from "./nav";
+import { useState } from "react";
 function  Sales_Record(){
+    const date=new Date();
+    const month=date.getMonth();
+    const year=date.getFullYear();
+    const day=date.getDate();   
+    const [SalesData,setSalesData]=useState({
+        categories:"",
+        brands:"",
+        keywords:""
+    });
+    const handelChange=(e)=>{
+        setSalesData({...SalesData,[e.target.name]:e.target.value});
+    }
+
+    const handelSubmit=async()=>{
+        try{
+            const GetSalesData=await fetch("http://localhost:8000/control/Sales_record",{
+                method:"POST",
+                headers:{
+                    "Content-type":"application/json",
+                },
+                body:JSON.stringify(SalesData)
+            });
+            console.log("frontend data",SalesData)
+            const data=await GetSalesData.json();
+            console.log("backend data",data)
+        }   
+        catch(error){
+            console.log("api didnt fetched",error)
+        }
+    }
+
     return(
         <>
         <div>
@@ -15,21 +47,22 @@ function  Sales_Record(){
                         <div>
                             <div>
                                 <label htmlFor="">Categories</label>
-                                <select name="" id="">
+                                <select name="categories" value={SalesData.categories} onChange={handelChange} id="">
                                     <option value="">loop</option>
                                 </select>
                             </div>
                             <div>
                                 <label htmlFor="">Brands</label>
-                                <select name="" id="">
+                                <select name="brands" value={SalesData.brands} onChange={handelChange} id="">
                                     <option value="">loop</option>
                                 </select>
                             </div>
                             <div>
                                 <label htmlFor="">Keywords</label>
                                 <div>
-                                    <textarea name="" id=""></textarea>
+                                    <textarea name="keywords" value={SalesData.keywords}  onChange={handelChange} id=""></textarea>
                                 </div>
+                                <button onClick={handelSubmit}>Search</button>
                             </div>
                         </div>
                         <div>

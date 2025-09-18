@@ -5,11 +5,11 @@ from .views import *
 urlpatterns = [
     path("/login",login),
     path("/home",home),
-    path("/Purchase_stock",purchase_stock),
+    path("/purchase_stock",Purchase_stock),
     path("/Sales_record",sales_record),
     path("/Sales_graph",sales_graph),
     path("/Summary",summary),
-    path("/Logbook",logbook),
+    path("/logbook",logbook),
     
 
 ]
