@@ -15,6 +15,8 @@ class LogbookData(models.Model):
     particulars=models.CharField(max_length=255)
     vendor=models.CharField(max_length=255)
     type=models.CharField(max_length=100)
+    quantity=models.IntegerField()
+    rate=models.DecimalField(max_digits=10, decimal_places=2)
     amount=models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):

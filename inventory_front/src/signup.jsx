@@ -18,7 +18,7 @@ function Signup(){
 
     const handelSubmit=async()=>{
         try{
-            const GetSignupData=await fetch("http://localhost:8000/controls/login",{
+            const GetSignupData=await fetch("http://localhost:8000/controls/loginSignup",{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json",
@@ -67,7 +67,7 @@ function Signup(){
                     <button onClick={handelSubmit}>Submit</button>
                 </div>
                 <div>
-                    <Link to={"/"}>Create An Account?</Link>
+                    <Link to={"/"}>Already has an account?</Link>
                 </div>
             </div>
         </div>

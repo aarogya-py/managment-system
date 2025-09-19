@@ -33,7 +33,22 @@ function Logbook(){
         catch(error){
             console.log("api didnt fetched",error)
         }
-    }   
+    } 
+    const viewLogbook=async()=>{
+        try{
+            const GetLogbookData=await fetch("http://localhost:8000/control/view_logbook",{
+                method:"GET",
+                headers:{
+                    "Content-type":"application/json",
+                },
+            }); 
+            const viewlogbookdata=await GetLogbookData.json();
+            console.log("backend data",data)
+        }  
+        catch(error){
+            console.log("api didnt fetched",error)
+        }   
+    }
 
     return(
         <>
@@ -69,6 +84,36 @@ function Logbook(){
                     </div>
                     <div>
                         <h2>Transactions</h2>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>   
+                                        <th>Particulars</th>
+                                        <th>Vendor</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        {
+                                    
+                                        viewLogbook.map((item)=>{
+                                            <tr key={item.id}>
+                                                <td>{item.date}</td>
+                                                <td>{item.particulars}</td>
+                                                <td>{item.vendor}</td>
+                                                <td>{item.type}</td>
+                                                <td>{item.amount}</td>
+                                    </tr>
+
+                                        })
+                                        }
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        
                         
                     </div>
                 </div>

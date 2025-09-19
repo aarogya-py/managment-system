@@ -54,7 +54,7 @@ const log =async () => {
                     </button>
                 </div>
                 <div>
-                    <Link to={'/signup'}>Already Has An Account?</Link>
+                    <Link to={'/signup'}>Wanna create new ?</Link>
                 </div>
             </div>
         </div>

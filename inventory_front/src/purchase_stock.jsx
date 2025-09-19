@@ -6,6 +6,7 @@ function Purchase_stock(){
         product_name:"",
         categories:"",
         brand_name:"",
+        quantity:"",
         cost_price:""
     });
     const date=new Date();
@@ -61,7 +62,9 @@ function Purchase_stock(){
                                 <input type="text" placeholder="Product Name" value={PurchaseData.product_name} name="product_name" onChange={handelChange} />
                                 <input type="text" placeholder="Categories"  name="categories" value={PurchaseData.categories} onChange={handelChange}/>
                                 <input type="text" name="brand_name"  value={PurchaseData.brand_name} id="" placeholder="Brand Name" onChange={handelChange}/>
+                                <input type="text" placeholder="Quantity" name="quantity" value={PurchaseData.quantity}  onChange={handelChange}/>
                                 <input type="text" placeholder="Cost Price" name="cost_price" value={PurchaseData.cost_price}  onChange={handelChange}/>
+                                
                                 <div>
                                     <button onClick={handelSubmit}>Post Purchase</button>
                                 </div>
