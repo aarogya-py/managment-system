@@ -6,25 +6,25 @@ function Nav(){
         <div>
             <nav>
                 <ul>
-                    <div>
+                    <div className="font-bold py-5 flex justify-center">
                         <Link to={"/home"}>Home</Link>
                     </div>
-                    <div>
+                    <div className="font-bold py-5 flex justify-center">
                         <Link to={"/logbook"}>Logbook</Link>
                     </div>
-                    <div>
+                    <div className="font-bold py-5 flex justify-center">
                         <Link to={"/analytics"}>Analytics</Link>
                     </div> 
-                    <div>
+                    <div className="font-bold py-5 flex justify-center">
                         <Link to={"/purchase_stock"}>Purchase Stock</Link>
                     </div>
-                    <div>
+                    <div className="font-bold py-5 flex justify-center">
                         <Link to={"/sales_record"}>Sales Record</Link>
                     </div>
-                    <div>
+                    <div className="font-bold py-5 flex justify-center">
                         <Link to={"/graphs"}>Graphs</Link>
                     </div>
-                    <div>
+                    <div className="font-bold py-5 flex justify-center">
                         <Link to={"/billing"}>Billings</Link>
                     </div>
                 </ul>

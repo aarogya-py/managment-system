@@ -39,21 +39,21 @@ const log =async () => {
 
     return(
         <>
-        <div>
-            <div className="bg-white">
-                <h1>Karobar</h1>
-                <div>
-                    <input type="text" placeholder= "Username" value={loginData.username} name="username" onChange={handelChange}/>
+            <div className=" flex justify-center items-center h-screen">
+        <div className="w-[500px] h-[500px] p-6 border border-gray-300 rounded-lg shadow-lg"> 
+                <h1 className=" text-center p-5 font-bold text-3xl shadow-lg">Karobar</h1>
+                <div className=" flex flex-col gap-5 mt-10 shadow-md ">
+                    <input type="text" className="h-[53px]" placeholder= "Username" value={loginData.username} name="username" onChange={handelChange}/>
                 </div>
-                <div>
-                    <input type="text" placeholder="Password" value={loginData.password} name="password" onChange={handelChange}/>
+                <div className="flex flex-col gap-5 mt-10 shadow-md">
+                    <input type="text" className="h-[53px]" placeholder="Password" value={loginData.password} name="password" onChange={handelChange}/>
                 </div>
-                <div>
+                <div className="flex flex-col gap-5 mt-10 shadow-lg bg-blue-400 h-[53px] rounded-xl flex justify-center items-center text-white font-bold">
                     <button onClick={log}>
                         Login
                     </button>
                 </div>
-                <div>
+                <div className="flex flex-col gap-5 mt-10 text-center">
                     <Link to={'/signup'}>Wanna create new ?</Link>
                 </div>
             </div>

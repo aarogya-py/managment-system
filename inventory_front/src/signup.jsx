@@ -45,28 +45,28 @@ function Signup(){
 }
     return(
         <>
-        <div>
-            <div>
+            <div className=" flex justify-center items-center h-screen">
+        <div className="w-[500px] h-[550px] p-6 border border-gray-300 rounded-lg shadow-lg"> 
                 <div>
-                    <h1>Karobar</h1>
+                <h1 className=" text-center p-5 font-bold text-3xl shadow-lg">Karobar</h1>
                 </div>
-                <div>
+                <div className=" flex flex-col gap-5 mt-10 shadow-md ">
                     <input type="text" placeholder="Email*"  required name="email" value={SignupData.email} onChange={handelChange}/>
-                    <p>{Emailmessage}</p>
                 </div>
-                <div>
+                <div className=" flex flex-col gap-5 mt-10 shadow-md ">
                     <input type="text" placeholder="Username*" required name="username" value={SignupData.username} onChange={handelChange}/>
                 </div>
-                <div>
+                <div className=" flex flex-col gap-5 mt-10 shadow-md ">
                     <input type="text" placeholder="Password*" required name="password" value={SignupData.password} onChange={handelChange}/>
                 </div>
-                <div>
+                                <div className=" flex flex-col gap-5 mt-10 shadow-md ">
+
                     <input type="text" placeholder="Confirm Password*" required name="confirm_password" value={SignupData.confirm_password} onChange={handelChange} />
                 </div>
-                <div>
+                <div className="flex flex-col gap-5 mt-10 shadow-lg bg-blue-400 h-[53px] rounded-xl flex justify-center items-center text-white font-bold">
                     <button onClick={handelSubmit}>Submit</button>
                 </div>
-                <div>
+                <div className="flex flex-col gap-5 mt-10 text-center">
                     <Link to={"/"}>Already has an account?</Link>
                 </div>
             </div>

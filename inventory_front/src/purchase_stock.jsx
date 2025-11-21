@@ -36,16 +36,14 @@ function Purchase_stock(){
     }
     return(
         <>
-        <div>
             <div>
-                <h1>
-                    welcome user
-                </h1>
-            </div> 
-            <div>
-                <div>
+            <div className=" p-5 bg-blue-400 text-white font-bold text-2xl">
+                <h1>Welcome,username db bata name aaucha</h1>
+            </div>
+            <div className="flex border border-gray-300">
+                <div className="w-1/6 h-screen border-r border-gray-300">
                     <Nav/>
-                </div> 
+                </div>
                 <div>
                     <div>
                         <p>month</p>
