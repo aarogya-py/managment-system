@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 function Signup(){
-    const nagivate=useNavigate();
+    const navigate=useNavigate();
     const [SignupData,setSignupData]=useState({
         email:"",
         username:"",
@@ -16,9 +16,10 @@ function Signup(){
     const [Emailmessage,setEmailMessage]=useState("");   
     const [UsernameMessage,setUsernameMessage]=useState("");
 
-    const handelSubmit=async()=>{
+    const handelSubmit=async(e)=>{
+        e.preventDefault();
         try{
-            const GetSignupData=await fetch("http://localhost:8000/controls/loginSignup",{
+            const GetSignupData=await fetch("http://localhost:8000/control/loginSignup",{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json",
@@ -28,15 +29,21 @@ function Signup(){
             const data=await GetSignupData.json();
             if (data=="email_exist"){
                 setEmailMessage("*Email already exists"); 
+                console.log("data",data);
             }
             else if(data=="username_exist"){
                 setUsernameMessage("*Username already exists");
+                                console.log("data",data);
+
         }
             else if(data=="confirm_dont_match"){
                 alert("Password and Confirm Password do not match");
+                                console.log("data",data);
+
             }
-            else{
+            else if (GetSignupData.ok){
                 alert("Signup Successful");
+                navigate("/");
             }
         }
     catch(error){

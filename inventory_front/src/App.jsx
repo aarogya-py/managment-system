@@ -8,6 +8,7 @@ import Sales_Record from './sales_record'
 // import Sales_Graph from './slaes_graph'
 import Logbook from './logbook'
 // import Summary from './summary'
+import Billing from "./billing";
 
 function App() {
   return(
@@ -19,6 +20,7 @@ function App() {
     <Route path="/logbook" element={<Logbook />}/>
     <Route path="/purchase_stock" element={<Purchase_stock />}/>
     <Route path="/sales_record" element={<Sales_Record />}/>
+    <Route path="/billing" element={<Billing />}/>
       {/* <Route path="/Sales_graph" element={<Sales_Graph />}></Route>
       <Route path="/Summary" element={<Summary />}></Route> */}
   </Routes> 

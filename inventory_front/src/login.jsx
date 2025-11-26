@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { } from "react"
 import Signup from "./signup";
+import { useNavigate } from "react-router-dom";
 function Login(){
+    const navigate=useNavigate();
 const [loginData,setloginData]=useState({
     username:"",  
     password:"",
@@ -14,21 +16,23 @@ const handelChange=(e)=>{
 const log =async () => {
     
     try{
-        const GetLoginData=await fetch("http://127.0.0.1:8000/controls/login",{
+        const GetLoginData=await fetch("http://127.0.0.1:8000/control/Login_verification",{
             method:"POST",
             headers:{
                 "Content-type":"application/json",
             },
             body: JSON.stringify(loginData)
         }) 
-        .then(response=>{
-            if(response){
+       
+            if(GetLoginData.ok){
                 console.log(loginData)
+                navigate("/home");
+                
             }
             else{
                 console.log("user invalid")
             }    
-        })
+        
         const data =await GetLoginData.json();
                 console.log("backend data",data)
 }

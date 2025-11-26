@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Nav from "./nav";
+
 function Purchase_stock(){
     const [PurchaseData,setPurchaseData]=useState({
         date:"",
@@ -10,9 +11,9 @@ function Purchase_stock(){
         cost_price:""
     });
     const date=new Date();
-    const month=date.getMonth();
-    const day=date.getDate();
-    const year=date.getFullYear();
+        const currentMonth=date.toLocaleString('default',{month:'long'});
+    const currentYear=date.getFullYear();
+    const presentDate=date.toLocaleDateString();
     const handelChange=(e)=>{
         setPurchaseData({...PurchaseData,[e.target.name]:e.target.value});
     }
@@ -40,36 +41,39 @@ function Purchase_stock(){
             <div className=" p-5 bg-blue-400 text-white font-bold text-2xl">
                 <h1>Welcome,username db bata name aaucha</h1>
             </div>
-            <div className="flex border border-gray-300">
+            <div className="flex border border-gray-300 rounded-md">
                 <div className="w-1/6 h-screen border-r border-gray-300">
                     <Nav/>
                 </div>
-                <div>
+                <div className="w-full">
                     <div>
-                        <p>month</p>
-                        <p>date</p>
+                    <div className=" flex justify-end items-end text-lg mr-5">
+                        {currentMonth},{currentYear}
+                        </div>
+                    <div className=" flex justify-end items-end mr-10">
+                        {presentDate}</div>
                     </div>
-                    <div>
-                        <div>
-                            <h1>
+                    <div className="border border-gray-400  rounded-md m-10 p-5">
+                        <div className="flex justify-center items-center">
+                            <h1 className="font-bold text-xl m-5">
                                 Purchase Entries
                             </h1>
                         </div>
-                        <div>
-                                <input type="date"  name="date" value={PurchaseData.date} onChange={handelChange}/>
-                                <input type="text" placeholder="Product Name" value={PurchaseData.product_name} name="product_name" onChange={handelChange} />
-                                <input type="text" placeholder="Categories"  name="categories" value={PurchaseData.categories} onChange={handelChange}/>
-                                <input type="text" name="brand_name"  value={PurchaseData.brand_name} id="" placeholder="Brand Name" onChange={handelChange}/>
-                                <input type="text" placeholder="Quantity" name="quantity" value={PurchaseData.quantity}  onChange={handelChange}/>
-                                <input type="text" placeholder="Cost Price" name="cost_price" value={PurchaseData.cost_price}  onChange={handelChange}/>
+                        <div className="flex  justify-center items-center gap-3 mb-5">
+                                <input className="border-black-200 shadow-lg rounded-sm" type="date"  name="date" value={PurchaseData.date} onChange={handelChange}/>
+                                <input className="border-black-200 shadow-lg rounded-sm" type="text" placeholder="Product Name" value={PurchaseData.product_name} name="product_name" onChange={handelChange} />
+                                <input className="border-black-200 shadow-lg rounded-sm" type="text" placeholder="Categories"  name="categories" value={PurchaseData.categories} onChange={handelChange}/>
+                                <input className="border-black-200 shadow-lg rounded-sm" type="text" name="brand_name"  value={PurchaseData.brand_name} id="" placeholder="Brand Name" onChange={handelChange}/>
+                                <input className="border-black-200 shadow-lg rounded-sm" type="text" placeholder="Quantity" name="quantity" value={PurchaseData.quantity}  onChange={handelChange}/>
+                                <input className="border-black-200 shadow-lg rounded-sm" type="text" placeholder="Cost Price" name="cost_price" value={PurchaseData.cost_price}  onChange={handelChange}/>
                                 
-                                <div>
-                                    <button onClick={handelSubmit}>Post Purchase</button>
-                                </div>
                         </div>
+                                <div className="flex justify-center items-center mt-10">
+                                    <button className="bg-blue-500 w-[300px] font-bold rounded-lg h-[40px]" onClick={handelSubmit}>Post Purchase</button>
+                                </div>
                     </div>
                     <div>
-                        <div>
+                        <div className="flex justify-center items-center text-xl font-bold">
                             <h1>Purchase History</h1>
                         </div>
                         <div>

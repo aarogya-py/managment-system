@@ -1,12 +1,25 @@
-function billing(){
+import Nav from "./nav";
+function Billing(){
+     const date =new Date();
+    const presentDate=date.toLocaleDateString();
+    const currentMonth=date.toLocaleString('default',{month:'long'});
     return(
         <>
         <div>
-            <div>
-                <h1>store name</h1>
-                <div>
-                    <p>month</p>
-                    <p>date</p>
+            <div className=" p-5 bg-blue-400 text-white font-bold text-2xl">
+                <h1>Welcome,username db bata name aaucha</h1>
+            </div>
+            <div className="flex">
+                <div className="w-1/6 h-screen border-r border-gray-300">
+                    <Nav/>
+                </div>
+            <div className="border border-black w-full m-10">
+                <h1 className="flex justify-center items-center">store name</h1>
+                <div className="flex justify-end items-end mr-10">
+                    <p>{currentMonth}</p>
+                </div>
+                 <div className="flex justify-end items-end mr-10">
+                    <p>{presentDate}</p>
                 </div>
                 <div>
                     <p>Companyname</p>
@@ -54,7 +67,9 @@ function billing(){
                 </div>
             </div>
         </div>
+        </div>
         </>
     )
 
 }
+export default Billing;

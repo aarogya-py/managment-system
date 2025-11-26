@@ -1,9 +1,6 @@
 import Nav from "./nav";
 function Home(){
     const date=new Date();
-    const month=date.getMonth();
-    const year=date.getFullYear();
-    const day=date.getDate();
     const presentDate=date.toLocaleDateString();
     const currentMonth=date.toLocaleString('default',{month:'long'});
     const currentYear=date.getFullYear();

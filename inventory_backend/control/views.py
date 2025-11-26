@@ -27,7 +27,7 @@ def loginSignup(request):
         return Response(serealizer.data,status=status.HTTP_201_CREATED)
     return Response(serealizer.errors,status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def Login_verification(request):
     username=request.data.get('username')
     password=request.data.get('password')
